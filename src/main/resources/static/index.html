@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>AI 学习资料问答助手</title>
+  <link rel="stylesheet" href="/study.css">
+  <script src="/study.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#question">跳到提问</a>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="identity"><span class="product-mark" aria-hidden="true">✳</span><div>学习资料助手<small>STUDY WORKSPACE</small></div></div>
+      <div class="nav-label">工作区</div>
+      <nav class="page-nav" aria-label="工作区导航">
+        <button type="button" data-view="ask" aria-current="page"><span aria-hidden="true">＋</span>提问</button>
+        <button type="button" data-view="sources"><span aria-hidden="true">▤</span>核对引用</button>
+      </nav>
+      <div class="sidebar-note"><span class="local-dot" aria-hidden="true"></span> 本地学习资料<p>从问题出发，回到原文。<br>引用编号不代表内容已获验证。</p></div>
+      <div class="sidebar-footer">AI 学习资料问答助手<small>单次问答 · 不保留会话历史</small></div>
+    </aside>
+    <main class="agent-window">
+      <header class="workspace-header"><div><span class="breadcrumb">学习工作区</span><span class="separator">/</span><strong id="view-title">提问</strong></div><span class="session-label">单次问答</span></header>
+      <div id="ask-view" class="view ask-view">
+        <div class="conversation">
+          <section class="welcome" id="welcome" aria-labelledby="welcome-title"><span class="agent-symbol" aria-hidden="true">✳</span><p class="eyebrow">YOUR STUDY COMPANION</p><h1 id="welcome-title">今天，想弄懂什么？</h1><p>向本地学习资料提问，沿着引用找到答案的出处。</p><div class="examples" aria-label="示例问题"><button type="button">候选键与主键有什么区别？</button><button type="button">NULL 应该如何判断？</button></div></section>
+          <section class="answer-panel" id="answer-section" aria-labelledby="answer-title" aria-busy="false" hidden>
+            <p id="answered-question" class="asked-question" hidden></p>
+            <div class="assistant-heading"><span class="small-symbol" aria-hidden="true">✳</span><h2 id="answer-title">学习助手</h2><span id="status" class="status">等待提问</span></div>
+            <p id="answer-message" class="muted" role="status" aria-live="polite">写下问题，回答会显示在这里。</p>
+            <div id="answer" class="answer-text" hidden></div>
+            <p id="citation-notice" class="notice" hidden>引用编号已校验；引用内容是否支持回答，仍需核对原文。</p>
+          </section>
+        </div>
+        <section class="question-panel" id="ask" aria-labelledby="question-label">
+          <form id="question-form" novalidate><label id="question-label" for="question">向学习资料提问</label><textarea id="question" name="question" rows="3" placeholder="输入你的问题…" aria-describedby="question-help form-error" required></textarea><div class="form-actions"><span id="question-help">Ctrl / ⌘ + Enter 提交</span><button class="primary" id="submit" type="submit">提问 ↑</button></div><p id="form-error" class="form-error" role="alert" hidden></p></form>
+          <p class="composer-note">每次提问独立处理，不会附带上一轮对话。请以资料原文为准。</p>
+        </section>
+      </div>
+      <section class="view sources-panel" id="sources" aria-labelledby="sources-title" hidden>
+        <div class="sources-intro"><p class="eyebrow">SOURCE EXPLORER</p><h1 id="sources-title" tabindex="-1">回到原文，核对依据。</h1><p class="source-help">点击回答中的引用编号，可直接打开对应片段。</p><button class="back-button" type="button" data-view="ask">← 返回提问与回答</button></div>
+        <section aria-labelledby="cited-title"><div class="section-heading"><h2 id="cited-title">实际引用 <span id="cited-count" class="count">0</span></h2><span class="subtle-label">本次回答使用的资料</span></div><div id="cited-sources"><p class="empty">提问后，在这里查看回答引用的资料。</p></div></section>
+        <details id="other-sources" class="other-sources"><summary>其他候选资料 <span id="other-count" class="count">0</span></summary><p class="source-help">其他候选资料，未被本次回答引用。</p><div id="candidate-sources"><p class="empty">暂无候选资料。</p></div></details>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
